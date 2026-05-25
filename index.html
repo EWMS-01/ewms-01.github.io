@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Miora Rasolofo — Vos prospects disparaissent. Je trouve pourquoi.</title>
+  <meta name="description" content="Audit express de votre process de vente en 30 minutes. Je trouve où vos prospects disparaissent — et pourquoi ils ne signent pas." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --off-black: #111111;
+      --card: #161616;
+      --border: #2a2a2a;
+      --acid: #d4f53c;
+      --acid-dim: #a8c22e;
+      --white: #f5f5f0;
+      --muted: #888884;
+      --red: #ff3b3b;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2rem;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      letter-spacing: 0.08em;
+      color: var(--acid);
+      text-decoration: none;
+    }
+
+    .nav-cta {
+      background: var(--acid);
+      color: var(--black);
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.55rem 1.2rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover { background: var(--acid-dim); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2rem;
+      padding-top: 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-text {
+      position: absolute;
+      top: 50%;
+      left: -2%;
+      transform: translateY(-50%);
+      font-family: var(--font-display);
+      font-size: clamp(12rem, 25vw, 22rem);
+      color: transparent;
+      -webkit-text-stroke: 1px #1f1f1f;
+      line-height: 0.85;
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--acid);
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 2rem;
+      height: 1px;
+      background: var(--acid);
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 11vw, 9.5rem);
+      line-height: 0.9;
+      letter-spacing: 0.02em;
+      position: relative;
+      margin-bottom: 2rem;
+    }
+
+    .hero-headline .accent { color: var(--acid); }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 3rem;
+      position: relative;
+      font-weight: 300;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .btn-primary {
+      background: var(--acid);
+      color: var(--black);
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      background: var(--acid-dim);
+      transform: translateY(-2px);
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* MARQUEE */
+    .marquee-wrap {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      padding: 0.85rem 0;
+      background: var(--off-black);
+    }
+
+    .marquee-track {
+      display: flex;
+      white-space: nowrap;
+      animation: marquee 22s linear infinite;
+    }
+
+    .marquee-item {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      padding: 0 2.5rem;
+      flex-shrink: 0;
+    }
+
+    .marquee-item span { color: var(--acid); margin-right: 2.5rem; }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* SECTIONS */
+    section { padding: 6rem 2rem; }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--acid);
+      margin-bottom: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 1.5rem;
+      height: 1px;
+      background: var(--acid);
+    }
+
+    /* PROBLEM */
+    .problem {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .problem-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      margin-bottom: 3rem;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      margin-top: 3rem;
+    }
+
+    .problem-card {
+      background: var(--off-black);
+      padding: 2rem;
+    }
+
+    .problem-card-num {
+      font-family: var(--font-display);
+      font-size: 4rem;
+      color: var(--border);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .problem-card h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+      color: var(--white);
+    }
+
+    .problem-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* HOW IT WORKS */
+    .how {
+      background: var(--off-black);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .how-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .how-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 0.95;
+      margin-bottom: 4rem;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0;
+      position: relative;
+    }
+
+    .step {
+      padding: 2rem;
+      border-left: 1px solid var(--border);
+      position: relative;
+    }
+
+    .step:first-child { border-left: none; }
+
+    .step-num {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      color: var(--acid);
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .step h3 {
+      font-size: 1.05rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+
+    .step p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .step-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      background: var(--acid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .step-icon svg {
+      width: 1.1rem;
+      height: 1.1rem;
+      stroke: var(--black);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* CASE STUDY */
+    .case {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .case-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 0.95;
+      margin-bottom: 4rem;
+    }
+
+    .case-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 3rem;
+    }
+
+    .case-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .case-client {
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .case-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--acid);
+      padding: 0.3rem 0.8rem;
+    }
+
+    .case-fuites {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .fuite {
+      border-left: 2px solid var(--acid);
+      padding-left: 1.25rem;
+    }
+
+    .fuite-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--acid);
+      margin-bottom: 0.5rem;
+    }
+
+    .fuite p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .case-quote {
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--white);
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    .case-quote cite {
+      display: block;
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      font-style: normal;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* CTA */
+    .cta-section {
+      background: var(--acid);
+      padding: 6rem 2rem;
+      text-align: center;
+    }
+
+    .cta-section .section-label {
+      color: rgba(0,0,0,0.4);
+      justify-content: center;
+    }
+
+    .cta-section .section-label::before {
+      background: rgba(0,0,0,0.4);
+    }
+
+    .cta-headline {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      line-height: 0.9;
+      color: var(--black);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    .cta-sub {
+      font-size: 1rem;
+      color: rgba(0,0,0,0.55);
+      max-width: 480px;
+      margin: 0 auto 3rem;
+    }
+
+    .btn-dark {
+      background: var(--black);
+      color: var(--acid);
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 1.1rem 3rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s;
+    }
+
+    .btn-dark:hover { background: #1a1a1a; }
+
+    .cta-guarantee {
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+      color: rgba(0,0,0,0.45);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--off-black);
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--acid);
+      letter-spacing: 0.08em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--border);
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow { animation: fadeUp 0.6s ease both; }
+    .hero-headline { animation: fadeUp 0.7s 0.1s ease both; }
+    .hero-sub { animation: fadeUp 0.7s 0.2s ease both; }
+    .hero-actions { animation: fadeUp 0.7s 0.3s ease both; }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      nav { padding: 1rem; }
+      section { padding: 4rem 1.25rem; }
+      .case-card { padding: 1.75rem; }
+      .step { border-left: none; border-top: 1px solid var(--border); padding: 1.5rem 0; }
+      .step:first-child { border-top: none; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">MIORA</a>
+    <a href="#audit" class="nav-cta">Audit gratuit</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-text" aria-hidden="true">VENTE</div>
+    <p class="hero-eyebrow">Audit Process de Vente</p>
+    <h1 class="hero-headline">
+      VOS PROSPECTS<br />
+      DISPARAISSENT.<br />
+      <span class="accent">JE TROUVE POURQUOI.</span>
+    </h1>
+    <p class="hero-sub">
+      En 30 minutes, j'identifie exactement où votre process de vente fuit — et ce que vous pouvez faire dès demain pour le boucher.
+    </p>
+    <div class="hero-actions">
+      <a href="#audit" class="btn-primary">Réserver l'audit gratuit</a>
+      <span class="hero-note">30 min · 100% gratuit · sans engagement</span>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-item"><span>✦</span> LEADS QUI NE CONVERTISSENT PAS</span>
+      <span class="marquee-item"><span>✦</span> PROSPECTS QUI DISPARAISSENT</span>
+      <span class="marquee-item"><span>✦</span> VENTES PERDUES SANS RAISON</span>
+      <span class="marquee-item"><span>✦</span> PROCESS QUI FUIENT</span>
+      <span class="marquee-item"><span>✦</span> LEADS QUI NE CONVERTISSENT PAS</span>
+      <span class="marquee-item"><span>✦</span> PROSPECTS QUI DISPARAISSENT</span>
+      <span class="marquee-item"><span>✦</span> VENTES PERDUES SANS RAISON</span>
+      <span class="marquee-item"><span>✦</span> PROCESS QUI FUIENT</span>
+    </div>
+  </div>
+
+  <!-- PROBLEM -->
+  <section>
+    <div class="problem">
+      <p class="section-label">Le problème</p>
+      <h2 class="problem-headline">
+        VOUS AVEZ DES<br />
+        PROSPECTS.<br />
+        <span style="color: var(--muted);">ILS N'ACHÈTENT PAS.</span>
+      </h2>
+      <p style="color: var(--muted); max-width: 520px; font-size: 1rem; line-height: 1.8;">
+        Ce n'est pas votre offre. Ce n'est pas votre prix. C'est votre process. Quelque part entre le premier contact et la signature, vous perdez des gens — et vous ne savez pas où.
+      </p>
+
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="problem-card-num">01</div>
+          <h3>Les leads entrent. Rien ne sort.</h3>
+          <p>Vos prospects arrivent mais ne sont pas qualifiés. Personne ne sait qui est chaud, qui est froid, et pourquoi.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-card-num">02</div>
+          <h3>Le "non" reste sans suite.</h3>
+          <p>Quand un prospect dit non, c'est fini. Pas de relance. Pas de nurturing. De l'argent qui dort sans que personne ne s'en occupe.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-card-num">03</div>
+          <h3>Vous pilotez à l'aveugle.</h3>
+          <p>Vous ne connaissez pas votre taux de conversion. Vous ne savez pas combien de ventes vous perdez chaque mois. Et donc vous ne pouvez pas agir.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how">
+    <div class="how-inner">
+      <p class="section-label">Comment ça marche</p>
+      <h2 class="how-headline">
+        30 MINUTES.<br />
+        3 FUITES IDENTIFIÉES.<br />
+        <span style="color: var(--acid);">1 RAPPORT LIVRÉ.</span>
+      </h2>
+
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">ÉTAPE 01</span>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M3 12h3m12 0h3M12 3v3m0 12v3"/></svg>
+          </div>
+          <h3>On creuse votre process</h3>
+          <p>5 questions directes sur votre pipeline — de la découverte à la signature. Sans détour.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">ÉTAPE 02</span>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/></svg>
+          </div>
+          <h3>J'identifie les fuites</h3>
+          <p>Mon œil de commerciale voit ce que vous ne voyez plus — les points de friction invisibles où l'argent disparaît.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">ÉTAPE 03</span>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <h3>Rapport livré en 48h</h3>
+          <p>Un document d'une page. 3 fuites. 3 actions concrètes. Rien que vous ne pouvez pas comprendre et appliquer.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">ÉTAPE 04</span>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg>
+          </div>
+          <h3>Vous décidez la suite</h3>
+          <p>Vous appliquez seul ou on travaille ensemble pour mettre en place les solutions. C'est votre choix.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY -->
+  <section>
+    <div class="case">
+      <p class="section-label">Cas concret</p>
+      <h2 class="case-headline">
+        CE QUE ÇA<br />
+        <span style="color: var(--acid);">DONNE EN VRAI.</span>
+      </h2>
+
+      <div class="case-card">
+        <div class="case-meta">
+          <span class="case-client">Juliette Bodson — Chenille Papillon</span>
+          <span class="case-tag">Coach business · Belgique</span>
+        </div>
+
+        <div class="case-fuites">
+          <div class="fuite">
+            <p class="fuite-label">Fuite 01</p>
+            <p>Les tests gratuits attiraient du monde — mais proposaient le programme complet trop tôt. Les prospects disparaissaient avant d'être prêts.</p>
+          </div>
+          <div class="fuite">
+            <p class="fuite-label">Fuite 02</p>
+            <p>Après les challenges, pas de suivi personnalisé pour les prospects non convertis. Un "non" = perdu pour toujours.</p>
+          </div>
+          <div class="fuite">
+            <p class="fuite-label">Fuite 03</p>
+            <p>Les formations self-study ne se vendent plus sans contact humain. L'acheteur d'aujourd'hui a besoin d'être accompagné pour passer à l'action.</p>
+          </div>
+        </div>
+
+        <blockquote class="case-quote">
+          "Je voulais prendre des notes pendant l'échange — ça m'a vraiment ouvert les yeux sur ce que je ne voyais plus."
+          <cite>— Juliette Bodson, Chenille Papillon</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="audit">
+    <p class="section-label">Passez à l'action</p>
+    <h2 class="cta-headline">
+      PRÊT À SAVOIR<br />
+      OÙ VOUS PERDEZ<br />
+      VOS CLIENTS ?
+    </h2>
+    <p class="cta-sub">
+      30 minutes. Une conversation franche. Un rapport livré dans les 48h. Sans bullshit, sans engagement.
+    </p>
+    <a href="mailto:la.moutarde.noire@gmail.com?subject=Demande d'audit gratuit&body=Bonjour Miora, je souhaite réserver mon audit express." class="btn-dark">
+      Réserver l'audit gratuit
+    </a>
+    <p class="cta-guarantee">Gratuit · 30 minutes · Rapport livré en 48h</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-logo">MIORA RASOLOFO</span>
+    <ul class="footer-links">
+      <li><a href="https://www.linkedin.com/in/miora-rasolofo-9640893a2/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="mailto:la.moutarde.noire@gmail.com">Contact</a></li>
+    </ul>
+    <span class="footer-copy">© 2026</span>
+  </footer>
+
+</body>
+</html>
