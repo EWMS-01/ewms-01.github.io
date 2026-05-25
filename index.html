@@ -14,13 +14,13 @@
     :root {
       --black: #0a0a0a;
       --off-black: #111111;
-      --card: #161616;
-      --border: #2a2a2a;
+      --card: #141414;
+      --border: #222222;
+      --border-light: #2e2e2e;
       --acid: #d4f53c;
       --acid-dim: #a8c22e;
-      --white: #f5f5f0;
-      --muted: #888884;
-      --red: #ff3b3b;
+      --white: #f0efe8;
+      --muted: #777772;
       --font-display: 'Bebas Neue', sans-serif;
       --font-body: 'DM Sans', sans-serif;
     }
@@ -44,69 +44,81 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1.25rem 2rem;
-      background: rgba(10,10,10,0.85);
-      backdrop-filter: blur(12px);
+      padding: 1.5rem 3rem;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .nav-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--acid);
+      border-radius: 50%;
     }
 
     .nav-logo {
       font-family: var(--font-display);
-      font-size: 1.4rem;
-      letter-spacing: 0.08em;
-      color: var(--acid);
+      font-size: 1.15rem;
+      letter-spacing: 0.12em;
+      color: var(--white);
       text-decoration: none;
     }
 
     .nav-cta {
-      background: var(--acid);
-      color: var(--black);
+      border: 1px solid var(--acid);
+      color: var(--acid);
       font-family: var(--font-body);
-      font-weight: 500;
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
+      font-weight: 400;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      padding: 0.55rem 1.2rem;
+      padding: 0.6rem 1.4rem;
       text-decoration: none;
-      transition: background 0.2s;
+      transition: background 0.2s, color 0.2s;
     }
 
-    .nav-cta:hover { background: var(--acid-dim); }
+    .nav-cta:hover {
+      background: var(--acid);
+      color: var(--black);
+    }
 
     /* HERO */
     .hero {
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 2rem;
-      padding-top: 6rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: end;
+      padding: 0 3rem 5rem;
+      padding-top: 7rem;
       position: relative;
       overflow: hidden;
+      gap: 4rem;
     }
 
-    .hero-bg-text {
+    .hero-line {
       position: absolute;
-      top: 50%;
-      left: -2%;
-      transform: translateY(-50%);
-      font-family: var(--font-display);
-      font-size: clamp(12rem, 25vw, 22rem);
-      color: transparent;
-      -webkit-text-stroke: 1px #1f1f1f;
-      line-height: 0.85;
-      pointer-events: none;
-      user-select: none;
-      white-space: nowrap;
+      top: 0; bottom: 0;
+      left: 50%;
+      width: 1px;
+      background: var(--border);
+      opacity: 0.5;
     }
+
+    .hero-left { position: relative; }
 
     .hero-eyebrow {
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: var(--acid);
-      margin-bottom: 1.5rem;
-      position: relative;
+      color: var(--muted);
+      margin-bottom: 2rem;
       display: flex;
       align-items: center;
       gap: 0.75rem;
@@ -115,29 +127,28 @@
     .hero-eyebrow::before {
       content: '';
       display: inline-block;
-      width: 2rem;
+      width: 1.5rem;
       height: 1px;
-      background: var(--acid);
+      background: var(--muted);
     }
 
     .hero-headline {
       font-family: var(--font-display);
-      font-size: clamp(4rem, 11vw, 9.5rem);
-      line-height: 0.9;
+      font-size: clamp(3.5rem, 8vw, 8rem);
+      line-height: 0.88;
       letter-spacing: 0.02em;
-      position: relative;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
     }
 
     .hero-headline .accent { color: var(--acid); }
 
     .hero-sub {
-      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-size: 1rem;
       color: var(--muted);
-      max-width: 520px;
+      max-width: 400px;
       margin-bottom: 3rem;
-      position: relative;
       font-weight: 300;
+      line-height: 1.8;
     }
 
     .hero-actions {
@@ -145,17 +156,16 @@
       align-items: center;
       gap: 2rem;
       flex-wrap: wrap;
-      position: relative;
     }
 
     .btn-primary {
       background: var(--acid);
       color: var(--black);
       font-weight: 500;
-      font-size: 0.85rem;
-      letter-spacing: 0.1em;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      padding: 1rem 2.5rem;
+      padding: 1rem 2.2rem;
       text-decoration: none;
       display: inline-block;
       transition: background 0.2s, transform 0.15s;
@@ -167,8 +177,38 @@
     }
 
     .hero-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 0.5rem;
+      gap: 1.5rem;
+    }
+
+    .hero-stat {
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+    }
+
+    .hero-stat-num {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      line-height: 1;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+
+    .hero-stat-num span { color: var(--acid); }
+
+    .hero-stat-label {
       font-size: 0.8rem;
       color: var(--muted);
+      margin-top: 0.4rem;
       letter-spacing: 0.05em;
     }
 
@@ -177,26 +217,35 @@
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
       overflow: hidden;
-      padding: 0.85rem 0;
+      padding: 0.9rem 0;
       background: var(--off-black);
     }
 
     .marquee-track {
       display: flex;
       white-space: nowrap;
-      animation: marquee 22s linear infinite;
+      animation: marquee 28s linear infinite;
     }
 
     .marquee-item {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      letter-spacing: 0.15em;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
       color: var(--muted);
-      padding: 0 2.5rem;
+      padding: 0 3rem;
       flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
     }
 
-    .marquee-item span { color: var(--acid); margin-right: 2.5rem; }
+    .marquee-dot {
+      width: 4px;
+      height: 4px;
+      background: var(--acid);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
 
     @keyframes marquee {
       from { transform: translateX(0); }
@@ -204,14 +253,14 @@
     }
 
     /* SECTIONS */
-    section { padding: 6rem 2rem; }
+    section { padding: 7rem 3rem; }
 
     .section-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--acid);
-      margin-bottom: 3rem;
+      color: var(--muted);
+      margin-bottom: 3.5rem;
       display: flex;
       align-items: center;
       gap: 0.75rem;
@@ -222,55 +271,73 @@
       display: inline-block;
       width: 1.5rem;
       height: 1px;
-      background: var(--acid);
+      background: var(--muted);
     }
 
     /* PROBLEM */
-    .problem {
-      max-width: 960px;
-      margin: 0 auto;
-    }
+    .problem { max-width: 1100px; margin: 0 auto; }
 
     .problem-headline {
       font-family: var(--font-display);
-      font-size: clamp(2.8rem, 6vw, 5.5rem);
-      line-height: 0.95;
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      line-height: 0.92;
       letter-spacing: 0.02em;
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
+    }
+
+    .problem-intro {
+      color: var(--muted);
+      max-width: 480px;
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .problem-quote {
+      color: var(--acid);
+      max-width: 480px;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      margin-bottom: 4rem;
+      font-style: italic;
+      opacity: 0.85;
     }
 
     .problem-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1px;
-      background: var(--border);
-      margin-top: 3rem;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--border);
     }
 
     .problem-card {
-      background: var(--off-black);
-      padding: 2rem;
+      padding: 2.5rem 2rem 2.5rem 0;
+      border-right: 1px solid var(--border);
     }
 
-    .problem-card-num {
-      font-family: var(--font-display);
-      font-size: 4rem;
-      color: var(--border);
-      line-height: 1;
-      margin-bottom: 1rem;
+    .problem-card:last-child { border-right: none; padding-right: 0; }
+    .problem-card:not(:first-child) { padding-left: 2rem; }
+
+    .problem-card-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--acid);
+      margin-bottom: 1.5rem;
+      display: block;
     }
 
     .problem-card h3 {
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: 500;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.85rem;
       color: var(--white);
+      line-height: 1.35;
     }
 
     .problem-card p {
-      font-size: 0.9rem;
+      font-size: 0.875rem;
       color: var(--muted);
-      line-height: 1.7;
+      line-height: 1.75;
     }
 
     /* HOW IT WORKS */
@@ -280,220 +347,236 @@
       border-bottom: 1px solid var(--border);
     }
 
-    .how-inner {
-      max-width: 960px;
-      margin: 0 auto;
+    .how-inner { max-width: 1100px; margin: 0 auto; }
+
+    .how-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: end;
+      margin-bottom: 5rem;
     }
 
     .how-headline {
       font-family: var(--font-display);
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
-      line-height: 0.95;
-      margin-bottom: 4rem;
+      font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+      line-height: 0.92;
+    }
+
+    .how-desc {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 380px;
     }
 
     .steps {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 0;
-      position: relative;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--border);
     }
 
     .step {
-      padding: 2rem;
-      border-left: 1px solid var(--border);
+      padding: 2.5rem 2rem 2.5rem 0;
+      border-right: 1px solid var(--border);
       position: relative;
     }
 
-    .step:first-child { border-left: none; }
+    .step:last-child { border-right: none; }
+    .step:not(:first-child) { padding-left: 2rem; }
 
     .step-num {
-      font-family: var(--font-display);
-      font-size: 0.85rem;
-      letter-spacing: 0.2em;
-      color: var(--acid);
-      margin-bottom: 1.5rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      color: var(--muted);
+      margin-bottom: 2rem;
       display: block;
     }
 
-    .step h3 {
-      font-size: 1.05rem;
-      font-weight: 500;
-      margin-bottom: 0.75rem;
-    }
-
-    .step p {
-      font-size: 0.875rem;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .step-icon {
-      width: 2.5rem;
-      height: 2.5rem;
+    .step-line {
+      width: 2rem;
+      height: 1px;
       background: var(--acid);
-      display: flex;
-      align-items: center;
-      justify-content: center;
       margin-bottom: 1.5rem;
     }
 
-    .step-icon svg {
-      width: 1.1rem;
-      height: 1.1rem;
-      stroke: var(--black);
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+    .step h3 {
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+    }
+
+    .step p {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.75;
     }
 
     /* CASE STUDY */
-    .case {
-      max-width: 960px;
-      margin: 0 auto;
-    }
+    .case { max-width: 1100px; margin: 0 auto; }
 
     .case-headline {
       font-family: var(--font-display);
       font-size: clamp(2.5rem, 5vw, 4.5rem);
-      line-height: 0.95;
+      line-height: 0.92;
       margin-bottom: 4rem;
     }
 
     .case-card {
       background: var(--card);
       border: 1px solid var(--border);
-      padding: 3rem;
+      padding: 3.5rem;
     }
 
     .case-meta {
       display: flex;
       align-items: center;
       gap: 1.5rem;
-      margin-bottom: 2.5rem;
-      padding-bottom: 2rem;
+      margin-bottom: 3rem;
+      padding-bottom: 2.5rem;
       border-bottom: 1px solid var(--border);
       flex-wrap: wrap;
     }
 
     .case-client {
-      font-weight: 500;
-      font-size: 1rem;
+      font-weight: 400;
+      font-size: 0.95rem;
+      color: var(--white);
+      letter-spacing: 0.02em;
     }
 
     .case-tag {
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--black);
-      background: var(--acid);
-      padding: 0.3rem 0.8rem;
+      color: var(--acid);
+      border: 1px solid var(--acid);
+      padding: 0.3rem 0.9rem;
+      opacity: 0.8;
     }
 
     .case-fuites {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2.5rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-bottom: 3rem;
+      border-top: 1px solid var(--border);
     }
 
     .fuite {
-      border-left: 2px solid var(--acid);
-      padding-left: 1.25rem;
+      padding: 2rem 2rem 2rem 0;
+      border-right: 1px solid var(--border);
     }
 
+    .fuite:last-child { border-right: none; }
+    .fuite:not(:first-child) { padding-left: 2rem; }
+
     .fuite-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--acid);
-      margin-bottom: 0.5rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      display: block;
     }
 
     .fuite p {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.6;
+      font-size: 0.875rem;
+      color: var(--white);
+      line-height: 1.7;
+      font-weight: 300;
     }
 
     .case-quote {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-style: italic;
       color: var(--white);
       border-top: 1px solid var(--border);
-      padding-top: 2rem;
+      padding-top: 2.5rem;
       font-weight: 300;
-      line-height: 1.6;
+      line-height: 1.65;
+      opacity: 0.9;
     }
 
     .case-quote cite {
       display: block;
-      margin-top: 0.75rem;
-      font-size: 0.8rem;
+      margin-top: 1rem;
+      font-size: 0.75rem;
       font-style: normal;
       color: var(--muted);
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     /* CTA */
     .cta-section {
-      background: var(--acid);
-      padding: 6rem 2rem;
+      padding: 8rem 3rem;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid var(--border);
     }
 
-    .cta-section .section-label {
-      color: rgba(0,0,0,0.4);
-      justify-content: center;
+    .cta-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(212,245,60,0.06) 0%, transparent 70%);
+      pointer-events: none;
     }
 
-    .cta-section .section-label::before {
-      background: rgba(0,0,0,0.4);
-    }
+    .cta-inner { position: relative; max-width: 700px; margin: 0 auto; }
 
     .cta-headline {
       font-family: var(--font-display);
       font-size: clamp(3rem, 7vw, 6.5rem);
-      line-height: 0.9;
-      color: var(--black);
-      margin-bottom: 1.5rem;
+      line-height: 0.88;
+      color: var(--white);
+      margin-bottom: 2rem;
       letter-spacing: 0.02em;
     }
 
+    .cta-headline .accent { color: var(--acid); }
+
     .cta-sub {
-      font-size: 1rem;
-      color: rgba(0,0,0,0.55);
-      max-width: 480px;
-      margin: 0 auto 3rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 420px;
+      margin: 0 auto 3.5rem;
+      line-height: 1.8;
     }
 
-    .btn-dark {
-      background: var(--black);
+    .btn-outline {
+      border: 1px solid var(--acid);
       color: var(--acid);
-      font-weight: 500;
-      font-size: 0.85rem;
-      letter-spacing: 0.1em;
+      font-weight: 400;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       padding: 1.1rem 3rem;
       text-decoration: none;
       display: inline-block;
-      transition: background 0.2s;
+      transition: background 0.2s, color 0.2s;
     }
 
-    .btn-dark:hover { background: #1a1a1a; }
+    .btn-outline:hover {
+      background: var(--acid);
+      color: var(--black);
+    }
 
     .cta-guarantee {
       margin-top: 1.5rem;
-      font-size: 0.8rem;
-      color: rgba(0,0,0,0.45);
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
 
     /* FOOTER */
     footer {
       background: var(--off-black);
       border-top: 1px solid var(--border);
-      padding: 2.5rem 2rem;
+      padding: 2rem 3rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -501,37 +584,45 @@
       gap: 1rem;
     }
 
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
     .footer-logo {
       font-family: var(--font-display);
-      font-size: 1.2rem;
-      color: var(--acid);
-      letter-spacing: 0.08em;
+      font-size: 1rem;
+      color: var(--white);
+      letter-spacing: 0.1em;
     }
 
     .footer-links {
       display: flex;
-      gap: 2rem;
+      gap: 2.5rem;
       list-style: none;
     }
 
     .footer-links a {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: var(--muted);
       text-decoration: none;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
       transition: color 0.2s;
     }
 
     .footer-links a:hover { color: var(--white); }
 
     .footer-copy {
-      font-size: 0.75rem;
-      color: var(--border);
+      font-size: 0.72rem;
+      color: var(--border-light);
+      letter-spacing: 0.05em;
     }
 
     /* ANIMATIONS */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
@@ -539,15 +630,33 @@
     .hero-headline { animation: fadeUp 0.7s 0.1s ease both; }
     .hero-sub { animation: fadeUp 0.7s 0.2s ease both; }
     .hero-actions { animation: fadeUp 0.7s 0.3s ease both; }
+    .hero-right { animation: fadeUp 0.8s 0.2s ease both; }
 
     /* RESPONSIVE */
-    @media (max-width: 640px) {
-      nav { padding: 1rem; }
-      section { padding: 4rem 1.25rem; }
-      .case-card { padding: 1.75rem; }
-      .step { border-left: none; border-top: 1px solid var(--border); padding: 1.5rem 0; }
-      .step:first-child { border-top: none; }
-      footer { flex-direction: column; align-items: flex-start; }
+    @media (max-width: 900px) {
+      nav { padding: 1.25rem 1.5rem; }
+      section { padding: 5rem 1.5rem; }
+      .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 4rem; gap: 3rem; }
+      .hero-line { display: none; }
+      .hero-right { flex-direction: row; flex-wrap: wrap; gap: 2rem; }
+      .hero-stat { border-top: none; border-left: 1px solid var(--border); padding: 0 0 0 1.5rem; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .problem-card { border-right: none; border-bottom: 1px solid var(--border); padding: 2rem 0; }
+      .problem-card:last-child { border-bottom: none; }
+      .problem-card:not(:first-child) { padding-left: 0; }
+      .how-top { grid-template-columns: 1fr; gap: 2rem; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .step { padding: 2rem 0; border-right: none; border-bottom: 1px solid var(--border); }
+      .step:nth-child(odd) { padding-right: 1.5rem; border-right: 1px solid var(--border); }
+      .step:not(:first-child) { padding-left: 0; }
+      .step:nth-child(odd):not(:first-child) { padding-left: 0; }
+      .step:nth-child(even) { padding-left: 1.5rem; }
+      .case-card { padding: 2rem; }
+      .case-fuites { grid-template-columns: 1fr; }
+      .fuite { border-right: none; border-bottom: 1px solid var(--border); padding: 1.5rem 0; }
+      .fuite:last-child { border-bottom: none; }
+      .fuite:not(:first-child) { padding-left: 0; }
+      footer { flex-direction: column; align-items: flex-start; padding: 1.5rem; }
     }
   </style>
 </head>
@@ -555,39 +664,62 @@
 
   <!-- NAV -->
   <nav>
-    <a href="#" class="nav-logo">MIORA</a>
+    <a href="#" class="nav-logo">
+      <div class="nav-left">
+        <div class="nav-dot"></div>
+        MIORA RASOLOFO
+      </div>
+    </a>
     <a href="#audit" class="nav-cta">Audit gratuit</a>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-bg-text" aria-hidden="true">VENTE</div>
-    <p class="hero-eyebrow">Audit Process de Vente</p>
-    <h1 class="hero-headline">
-      VOS PROSPECTS<br />
-      DISPARAISSENT.<br />
-      <span class="accent">JE TROUVE POURQUOI.</span>
-    </h1>
-    <p class="hero-sub">
-      En 30 minutes, j'identifie exactement où votre process de vente fuit — et ce que vous pouvez faire dès demain pour le boucher.
-    </p>
-    <div class="hero-actions">
-      <a href="#audit" class="btn-primary">Réserver l'audit gratuit</a>
-      <span class="hero-note">30 min · 100% gratuit · sans engagement</span>
+    <div class="hero-line" aria-hidden="true"></div>
+    <div class="hero-left">
+      <p class="hero-eyebrow">Audit Process de Vente</p>
+      <h1 class="hero-headline">
+        VOS PROSPECTS<br />
+        DISPARAISSENT.<br />
+        <span class="accent">JE TROUVE<br />POURQUOI.</span>
+      </h1>
+      <p class="hero-sub">
+        En 30 minutes, j'identifie exactement où votre process de vente fuit — et ce que vous pouvez faire dès demain pour le boucher.
+      </p>
+      <div class="hero-actions">
+        <a href="#audit" class="btn-primary">Réserver l'audit gratuit</a>
+        <span class="hero-note">30 min · gratuit · sans engagement</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-stat">
+        <div class="hero-stat-num">30<span>min</span></div>
+        <div class="hero-stat-label">Pour identifier vos fuites</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">48<span>h</span></div>
+        <div class="hero-stat-label">Rapport livré</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">0<span>€</span></div>
+        <div class="hero-stat-label">Coût de l'audit</div>
+      </div>
     </div>
   </section>
 
   <!-- MARQUEE -->
   <div class="marquee-wrap" aria-hidden="true">
     <div class="marquee-track">
-      <span class="marquee-item"><span>✦</span> LEADS QUI NE CONVERTISSENT PAS</span>
-      <span class="marquee-item"><span>✦</span> PROSPECTS QUI DISPARAISSENT</span>
-      <span class="marquee-item"><span>✦</span> VENTES PERDUES SANS RAISON</span>
-      <span class="marquee-item"><span>✦</span> PROCESS QUI FUIENT</span>
-      <span class="marquee-item"><span>✦</span> LEADS QUI NE CONVERTISSENT PAS</span>
-      <span class="marquee-item"><span>✦</span> PROSPECTS QUI DISPARAISSENT</span>
-      <span class="marquee-item"><span>✦</span> VENTES PERDUES SANS RAISON</span>
-      <span class="marquee-item"><span>✦</span> PROCESS QUI FUIENT</span>
+      <span class="marquee-item"><div class="marquee-dot"></div> Leads qui ne convertissent pas</span>
+      <span class="marquee-item"><div class="marquee-dot"></div> Prospects qui disparaissent</span>
+      <span class="marquee-item"><div class="marquee-dot"></div> Ventes perdues sans raison</span>
+      <span class="marquee-item"><div class="marquee-dot"></div> Process qui fuient</span>
+      <span class="marquee-item"><div class="marquee-dot"></div> Pilotage à l'aveugle</span>
+      <span class="marquee-item"><div class="marquee-dot"></div> Leads qui ne convertissent pas</span>
+      <span class="marquee-item"><div class="marquee-dot"></div> Prospects qui disparaissent</span>
+      <span class="marquee-item"><div class="marquee-dot"></div> Ventes perdues sans raison</span>
+      <span class="marquee-item"><div class="marquee-dot"></div> Process qui fuient</span>
+      <span class="marquee-item"><div class="marquee-dot"></div> Pilotage à l'aveugle</span>
     </div>
   </div>
 
@@ -596,29 +728,31 @@
     <div class="problem">
       <p class="section-label">Le problème</p>
       <h2 class="problem-headline">
-        VOUS AVEZ DES<br />
-        PROSPECTS.<br />
+        VOUS AVEZ DES PROSPECTS.<br />
         <span style="color: var(--muted);">ILS N'ACHÈTENT PAS.</span>
       </h2>
-      <p style="color: var(--muted); max-width: 520px; font-size: 1rem; line-height: 1.8;">
+      <p class="problem-intro">
         Ce n'est pas votre offre. Ce n'est pas votre prix. C'est votre process. Quelque part entre le premier contact et la signature, vous perdez des gens — et vous ne savez pas où.
+      </p>
+      <p class="problem-quote">
+        "Dans 9 business sur 10, je retrouve les mêmes fuites — des leads sans qualification, des prospects qui disparaissent, des ventes perdues que personne ne documente."
       </p>
 
       <div class="problem-grid">
         <div class="problem-card">
-          <div class="problem-card-num">01</div>
-          <h3>Les leads entrent. Rien ne sort.</h3>
-          <p>Vos prospects arrivent mais ne sont pas qualifiés. Personne ne sait qui est chaud, qui est froid, et pourquoi.</p>
+          <span class="problem-card-tag">Fuite 01</span>
+          <h3>Les leads entrent.<br />Rien ne sort.</h3>
+          <p>Vos prospects arrivent mais ne sont pas qualifiés. Personne ne sait qui est chaud, qui est froid — et pourquoi.</p>
         </div>
         <div class="problem-card">
-          <div class="problem-card-num">02</div>
-          <h3>Le "non" reste sans suite.</h3>
-          <p>Quand un prospect dit non, c'est fini. Pas de relance. Pas de nurturing. De l'argent qui dort sans que personne ne s'en occupe.</p>
+          <span class="problem-card-tag">Fuite 02</span>
+          <h3>Le "non" reste<br />sans suite.</h3>
+          <p>Quand un prospect dit non, c'est fini. Pas de relance, pas de nurturing. De l'argent qui dort sans que personne ne s'en occupe.</p>
         </div>
         <div class="problem-card">
-          <div class="problem-card-num">03</div>
-          <h3>Vous pilotez à l'aveugle.</h3>
-          <p>Vous ne connaissez pas votre taux de conversion. Vous ne savez pas combien de ventes vous perdez chaque mois. Et donc vous ne pouvez pas agir.</p>
+          <span class="problem-card-tag">Fuite 03</span>
+          <h3>Vous pilotez<br />à l'aveugle.</h3>
+          <p>Vous ne connaissez pas votre taux de conversion. Vous ne savez pas combien de ventes vous perdez chaque mois.</p>
         </div>
       </div>
     </div>
@@ -627,45 +761,44 @@
   <!-- HOW IT WORKS -->
   <section class="how">
     <div class="how-inner">
-      <p class="section-label">Comment ça marche</p>
-      <h2 class="how-headline">
-        30 MINUTES.<br />
-        3 FUITES IDENTIFIÉES.<br />
-        <span style="color: var(--acid);">1 RAPPORT LIVRÉ.</span>
-      </h2>
+      <div class="how-top">
+        <div>
+          <p class="section-label">Comment ça marche</p>
+          <h2 class="how-headline">
+            30 MINUTES.<br />
+            3 FUITES.<br />
+            <span style="color: var(--acid);">1 RAPPORT.</span>
+          </h2>
+        </div>
+        <p class="how-desc">
+          Pas de questionnaire à remplir. Pas de slide deck. Une conversation directe, cinq questions, et un rapport livré dans les 48h avec ce que vous pouvez faire dès maintenant.
+        </p>
+      </div>
 
       <div class="steps">
         <div class="step">
-          <span class="step-num">ÉTAPE 01</span>
-          <div class="step-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M3 12h3m12 0h3M12 3v3m0 12v3"/></svg>
-          </div>
+          <span class="step-num">01</span>
+          <div class="step-line"></div>
           <h3>On creuse votre process</h3>
           <p>5 questions directes sur votre pipeline — de la découverte à la signature. Sans détour.</p>
         </div>
         <div class="step">
-          <span class="step-num">ÉTAPE 02</span>
-          <div class="step-icon">
-            <svg viewBox="0 0 24 24"><path d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/></svg>
-          </div>
+          <span class="step-num">02</span>
+          <div class="step-line"></div>
           <h3>J'identifie les fuites</h3>
-          <p>Mon œil de commerciale voit ce que vous ne voyez plus — les points de friction invisibles où l'argent disparaît.</p>
+          <p>Mon œil de commerciale voit ce que vous ne voyez plus — les points de friction où l'argent disparaît.</p>
         </div>
         <div class="step">
-          <span class="step-num">ÉTAPE 03</span>
-          <div class="step-icon">
-            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-          </div>
+          <span class="step-num">03</span>
+          <div class="step-line"></div>
           <h3>Rapport livré en 48h</h3>
-          <p>Un document d'une page. 3 fuites. 3 actions concrètes. Rien que vous ne pouvez pas comprendre et appliquer.</p>
+          <p>Une page. 3 fuites. 3 actions concrètes. Rien que vous ne pouvez pas comprendre et appliquer seul.</p>
         </div>
         <div class="step">
-          <span class="step-num">ÉTAPE 04</span>
-          <div class="step-icon">
-            <svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg>
-          </div>
+          <span class="step-num">04</span>
+          <div class="step-line"></div>
           <h3>Vous décidez la suite</h3>
-          <p>Vous appliquez seul ou on travaille ensemble pour mettre en place les solutions. C'est votre choix.</p>
+          <p>Vous appliquez seul ou on travaille ensemble. Aucune pression, aucun engagement.</p>
         </div>
       </div>
     </div>
@@ -676,8 +809,8 @@
     <div class="case">
       <p class="section-label">Cas concret</p>
       <h2 class="case-headline">
-        CE QUE ÇA<br />
-        <span style="color: var(--acid);">DONNE EN VRAI.</span>
+        CE QUE ÇA DONNE<br />
+        <span style="color: var(--acid);">EN VRAI.</span>
       </h2>
 
       <div class="case-card">
@@ -688,15 +821,15 @@
 
         <div class="case-fuites">
           <div class="fuite">
-            <p class="fuite-label">Fuite 01</p>
+            <span class="fuite-label">Fuite 01</span>
             <p>Les tests gratuits attiraient du monde — mais proposaient le programme complet trop tôt. Les prospects disparaissaient avant d'être prêts.</p>
           </div>
           <div class="fuite">
-            <p class="fuite-label">Fuite 02</p>
+            <span class="fuite-label">Fuite 02</span>
             <p>Après les challenges, pas de suivi personnalisé pour les prospects non convertis. Un "non" = perdu pour toujours.</p>
           </div>
           <div class="fuite">
-            <p class="fuite-label">Fuite 03</p>
+            <span class="fuite-label">Fuite 03</span>
             <p>Les formations self-study ne se vendent plus sans contact humain. L'acheteur d'aujourd'hui a besoin d'être accompagné pour passer à l'action.</p>
           </div>
         </div>
@@ -711,24 +844,30 @@
 
   <!-- CTA -->
   <section class="cta-section" id="audit">
-    <p class="section-label">Passez à l'action</p>
-    <h2 class="cta-headline">
-      PRÊT À SAVOIR<br />
-      OÙ VOUS PERDEZ<br />
-      VOS CLIENTS ?
-    </h2>
-    <p class="cta-sub">
-      30 minutes. Une conversation franche. Un rapport livré dans les 48h. Sans bullshit, sans engagement.
-    </p>
-    <a href="mailto:la.moutarde.noire@gmail.com?subject=Demande d'audit gratuit&body=Bonjour Miora, je souhaite réserver mon audit express." class="btn-dark">
-      Réserver l'audit gratuit
-    </a>
-    <p class="cta-guarantee">Gratuit · 30 minutes · Rapport livré en 48h</p>
+    <div class="cta-bg" aria-hidden="true"></div>
+    <div class="cta-inner">
+      <p class="section-label" style="justify-content: center;">Passez à l'action</p>
+      <h2 class="cta-headline">
+        PRÊT À SAVOIR<br />
+        OÙ VOUS PERDEZ<br />
+        <span class="accent">VOS CLIENTS ?</span>
+      </h2>
+      <p class="cta-sub">
+        30 minutes. Une conversation franche. Un rapport livré dans les 48h. Sans bullshit, sans engagement.
+      </p>
+      <a href="mailto:la.moutarde.noire@gmail.com?subject=Demande d'audit gratuit&body=Bonjour Miora, je souhaite réserver mon audit express." class="btn-outline">
+        Réserver l'audit gratuit
+      </a>
+      <p class="cta-guarantee">Gratuit · 30 minutes · Rapport en 48h</p>
+    </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <span class="footer-logo">MIORA RASOLOFO</span>
+    <div class="footer-left">
+      <div class="nav-dot"></div>
+      <span class="footer-logo">MIORA RASOLOFO</span>
+    </div>
     <ul class="footer-links">
       <li><a href="https://www.linkedin.com/in/miora-rasolofo-9640893a2/" target="_blank" rel="noopener">LinkedIn</a></li>
       <li><a href="mailto:la.moutarde.noire@gmail.com">Contact</a></li>
