@@ -17,8 +17,8 @@
       --card: #141414;
       --border: #222222;
       --border-light: #2e2e2e;
-      --acid: #E8C97A;
-      --acid-dim: #c9a94e;
+      --accent: #E8C97A;
+      --accent-dim: #c9a94e;
       --white: #f0efe8;
       --muted: #777772;
       --font-display: 'Bebas Neue', sans-serif;
@@ -36,7 +36,6 @@
       overflow-x: hidden;
     }
 
-    /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -50,32 +49,13 @@
       border-bottom: 1px solid var(--border);
     }
 
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .nav-dot {
-      width: 6px;
-      height: 6px;
-      background: var(--acid);
-      border-radius: 50%;
-    }
-
-    .nav-logo {
-      font-family: var(--font-display);
-      font-size: 1.15rem;
-      letter-spacing: 0.12em;
-      color: var(--white);
-      text-decoration: none;
-    }
+    .nav-left { display: flex; align-items: center; gap: 0.6rem; }
+    .nav-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
+    .nav-logo { font-family: var(--font-display); font-size: 1.15rem; letter-spacing: 0.12em; color: var(--white); text-decoration: none; }
 
     .nav-cta {
-      border: 1px solid var(--acid);
-      color: var(--acid);
-      font-family: var(--font-body);
-      font-weight: 400;
+      border: 1px solid var(--accent);
+      color: var(--accent);
       font-size: 0.75rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -83,35 +63,20 @@
       text-decoration: none;
       transition: background 0.2s, color 0.2s;
     }
+    .nav-cta:hover { background: var(--accent); color: var(--black); }
 
-    .nav-cta:hover {
-      background: var(--acid);
-      color: var(--black);
-    }
-
-    /* HERO */
     .hero {
       min-height: 100vh;
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: end;
-      padding: 0 3rem 5rem;
-      padding-top: 7rem;
+      padding: 7rem 3rem 5rem;
+      gap: 4rem;
       position: relative;
       overflow: hidden;
-      gap: 4rem;
     }
 
-    .hero-line {
-      position: absolute;
-      top: 0; bottom: 0;
-      left: 50%;
-      width: 1px;
-      background: var(--border);
-      opacity: 0.5;
-    }
-
-    .hero-left { position: relative; }
+    .hero-line { position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; background: var(--border); opacity: 0.5; }
 
     .hero-eyebrow {
       font-size: 0.7rem;
@@ -123,14 +88,7 @@
       align-items: center;
       gap: 0.75rem;
     }
-
-    .hero-eyebrow::before {
-      content: '';
-      display: inline-block;
-      width: 1.5rem;
-      height: 1px;
-      background: var(--muted);
-    }
+    .hero-eyebrow::before { content: ''; display: inline-block; width: 1.5rem; height: 1px; background: var(--muted); }
 
     .hero-headline {
       font-family: var(--font-display);
@@ -139,27 +97,12 @@
       letter-spacing: 0.02em;
       margin-bottom: 2.5rem;
     }
+    .hero-headline .accent { color: var(--accent); }
 
-    .hero-headline .accent { color: var(--acid); }
-
-    .hero-sub {
-      font-size: 1rem;
-      color: var(--muted);
-      max-width: 400px;
-      margin-bottom: 3rem;
-      font-weight: 300;
-      line-height: 1.8;
-    }
-
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
+    .hero-sub { font-size: 1rem; color: var(--muted); max-width: 400px; margin-bottom: 3rem; line-height: 1.8; }
 
     .btn-primary {
-      background: var(--acid);
+      background: var(--accent);
       color: var(--black);
       font-weight: 500;
       font-size: 0.78rem;
@@ -170,89 +113,17 @@
       display: inline-block;
       transition: background 0.2s, transform 0.15s;
     }
+    .btn-primary:hover { background: var(--accent-dim); transform: translateY(-2px); }
 
-    .btn-primary:hover {
-      background: var(--acid-dim);
-      transform: translateY(-2px);
-    }
+    .hero-note { display: block; margin-top: 1rem; font-size: 0.75rem; color: var(--muted); }
 
-    .hero-note {
-      font-size: 0.75rem;
-      color: var(--muted);
-      letter-spacing: 0.04em;
-    }
+    .hero-right { display: flex; flex-direction: column; justify-content: flex-end; gap: 0; }
 
-    .hero-right {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding-bottom: 0.5rem;
-      gap: 1.5rem;
-    }
+    .hero-stat { border-top: 1px solid var(--border); padding: 1.5rem 0; }
+    .hero-stat-num { font-family: var(--font-display); font-size: 3.5rem; line-height: 1; color: var(--white); }
+    .hero-stat-num span { color: var(--accent); }
+    .hero-stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.4rem; }
 
-    .hero-stat {
-      border-top: 1px solid var(--border);
-      padding-top: 1.5rem;
-    }
-
-    .hero-stat-num {
-      font-family: var(--font-display);
-      font-size: 3.5rem;
-      line-height: 1;
-      color: var(--white);
-      letter-spacing: 0.02em;
-    }
-
-    .hero-stat-num span { color: var(--acid); }
-
-    .hero-stat-label {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 0.4rem;
-      letter-spacing: 0.05em;
-    }
-
-    /* MARQUEE */
-    .marquee-wrap {
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      overflow: hidden;
-      padding: 0.9rem 0;
-      background: var(--off-black);
-    }
-
-    .marquee-track {
-      display: flex;
-      white-space: nowrap;
-      animation: marquee 28s linear infinite;
-    }
-
-    .marquee-item {
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--muted);
-      padding: 0 3rem;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .marquee-dot {
-      width: 4px;
-      height: 4px;
-      background: var(--acid);
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
-    /* SECTIONS */
     section { padding: 7rem 3rem; }
 
     .section-label {
@@ -265,291 +136,64 @@
       align-items: center;
       gap: 0.75rem;
     }
+    .section-label::before { content: ''; display: inline-block; width: 1.5rem; height: 1px; background: var(--muted); }
 
-    .section-label::before {
-      content: '';
-      display: inline-block;
-      width: 1.5rem;
-      height: 1px;
-      background: var(--muted);
-    }
+    .inner { max-width: 1100px; margin: 0 auto; }
 
-    /* PROBLEM */
-    .problem { max-width: 1100px; margin: 0 auto; }
-
-    .problem-headline {
+    .section-headline {
       font-family: var(--font-display);
-      font-size: clamp(2.5rem, 5vw, 5rem);
+      font-size: clamp(2.5rem, 5vw, 4.8rem);
       line-height: 0.92;
       letter-spacing: 0.02em;
-      margin-bottom: 2rem;
-    }
-
-    .problem-intro {
-      color: var(--muted);
-      max-width: 480px;
-      font-size: 1rem;
-      line-height: 1.8;
-      margin-bottom: 1.5rem;
-    }
-
-    .problem-quote {
-      color: var(--acid);
-      max-width: 480px;
-      font-size: 0.9rem;
-      line-height: 1.8;
       margin-bottom: 4rem;
-      font-style: italic;
-      opacity: 0.85;
     }
 
-    .problem-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border-top: 1px solid var(--border);
-    }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--border); }
 
-    .problem-card {
-      padding: 2.5rem 2rem 2.5rem 0;
-      border-right: 1px solid var(--border);
-    }
+    .grid-item { padding: 2.5rem 2rem 2.5rem 0; border-right: 1px solid var(--border); }
+    .grid-item:last-child { border-right: none; }
+    .grid-item:not(:first-child) { padding-left: 2rem; }
 
-    .problem-card:last-child { border-right: none; padding-right: 0; }
-    .problem-card:not(:first-child) { padding-left: 2rem; }
+    .grid-tag { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem; display: block; }
+    .grid-item h3 { font-size: 1rem; font-weight: 500; margin-bottom: 0.85rem; color: var(--white); line-height: 1.35; }
+    .grid-item p { font-size: 0.875rem; color: var(--muted); line-height: 1.75; }
 
-    .problem-card-tag {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--acid);
-      margin-bottom: 1.5rem;
-      display: block;
-    }
+    .how { background: var(--off-black); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 
-    .problem-card h3 {
-      font-size: 1.05rem;
-      font-weight: 500;
-      margin-bottom: 0.85rem;
-      color: var(--white);
-      line-height: 1.35;
-    }
+    .how-top { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: end; margin-bottom: 5rem; }
+    .how-desc { font-size: 0.95rem; color: var(--muted); line-height: 1.8; }
 
-    .problem-card p {
-      font-size: 0.875rem;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    /* HOW IT WORKS */
-    .how {
-      background: var(--off-black);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .how-inner { max-width: 1100px; margin: 0 auto; }
-
-    .how-top {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6rem;
-      align-items: end;
-      margin-bottom: 5rem;
-    }
-
-    .how-headline {
-      font-family: var(--font-display);
-      font-size: clamp(2.5rem, 4.5vw, 4.5rem);
-      line-height: 0.92;
-    }
-
-    .how-desc {
-      font-size: 0.95rem;
-      color: var(--muted);
-      line-height: 1.8;
-      max-width: 380px;
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid var(--border);
-    }
-
-    .step {
-      padding: 2.5rem 2rem 2.5rem 0;
-      border-right: 1px solid var(--border);
-      position: relative;
-    }
-
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--border); }
+    .step { padding: 2.5rem 2rem 2.5rem 0; border-right: 1px solid var(--border); }
     .step:last-child { border-right: none; }
     .step:not(:first-child) { padding-left: 2rem; }
+    .step-num { font-size: 0.65rem; letter-spacing: 0.25em; color: var(--muted); margin-bottom: 1.5rem; display: block; }
+    .step-line { width: 2rem; height: 1px; background: var(--accent); margin-bottom: 1.5rem; }
+    .step h3 { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.75rem; line-height: 1.4; }
+    .step p { font-size: 0.83rem; color: var(--muted); line-height: 1.75; }
 
-    .step-num {
-      font-size: 0.65rem;
-      letter-spacing: 0.25em;
-      color: var(--muted);
-      margin-bottom: 2rem;
-      display: block;
-    }
+    .case-card { background: var(--card); border: 1px solid var(--border); padding: 3.5rem; }
+    .case-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 3rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+    .case-client { font-weight: 400; font-size: 0.95rem; color: var(--white); }
+    .case-tag { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); padding: 0.3rem 0.9rem; opacity: 0.8; }
 
-    .step-line {
-      width: 2rem;
-      height: 1px;
-      background: var(--acid);
-      margin-bottom: 1.5rem;
-    }
-
-    .step h3 {
-      font-size: 0.95rem;
-      font-weight: 500;
-      margin-bottom: 0.75rem;
-      line-height: 1.4;
-    }
-
-    .step p {
-      font-size: 0.83rem;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    /* CASE STUDY */
-    .case { max-width: 1100px; margin: 0 auto; }
-
-    .case-headline {
-      font-family: var(--font-display);
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
-      line-height: 0.92;
-      margin-bottom: 4rem;
-    }
-
-    .case-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 3.5rem;
-    }
-
-    .case-meta {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-      padding-bottom: 2.5rem;
-      border-bottom: 1px solid var(--border);
-      flex-wrap: wrap;
-    }
-
-    .case-client {
-      font-weight: 400;
-      font-size: 0.95rem;
-      color: var(--white);
-      letter-spacing: 0.02em;
-    }
-
-    .case-tag {
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--acid);
-      border: 1px solid var(--acid);
-      padding: 0.3rem 0.9rem;
-      opacity: 0.8;
-    }
-
-    .case-fuites {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      margin-bottom: 3rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .fuite {
-      padding: 2rem 2rem 2rem 0;
-      border-right: 1px solid var(--border);
-    }
-
+    .case-fuites { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--border); }
+    .fuite { padding: 2rem 2rem 2rem 0; border-right: 1px solid var(--border); }
     .fuite:last-child { border-right: none; }
     .fuite:not(:first-child) { padding-left: 2rem; }
+    .fuite-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; display: block; }
+    .fuite p { font-size: 0.875rem; color: var(--white); line-height: 1.7; font-weight: 300; }
 
-    .fuite-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 1rem;
-      display: block;
-    }
-
-    .fuite p {
-      font-size: 0.875rem;
-      color: var(--white);
-      line-height: 1.7;
-      font-weight: 300;
-    }
-
-    .case-quote {
-      font-size: 1.1rem;
-      font-style: italic;
-      color: var(--white);
-      border-top: 1px solid var(--border);
-      padding-top: 2.5rem;
-      font-weight: 300;
-      line-height: 1.65;
-      opacity: 0.9;
-    }
-
-    .case-quote cite {
-      display: block;
-      margin-top: 1rem;
-      font-size: 0.75rem;
-      font-style: normal;
-      color: var(--muted);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    /* CTA */
-    .cta-section {
-      padding: 8rem 3rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      border-top: 1px solid var(--border);
-    }
-
-    .cta-bg {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(212,245,60,0.06) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
+    .cta-section { padding: 8rem 3rem; text-align: center; position: relative; overflow: hidden; border-top: 1px solid var(--border); }
+    .cta-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(232,201,122,0.05) 0%, transparent 70%); pointer-events: none; }
     .cta-inner { position: relative; max-width: 700px; margin: 0 auto; }
-
-    .cta-headline {
-      font-family: var(--font-display);
-      font-size: clamp(3rem, 7vw, 6.5rem);
-      line-height: 0.88;
-      color: var(--white);
-      margin-bottom: 2rem;
-      letter-spacing: 0.02em;
-    }
-
-    .cta-headline .accent { color: var(--acid); }
-
-    .cta-sub {
-      font-size: 0.95rem;
-      color: var(--muted);
-      max-width: 420px;
-      margin: 0 auto 3.5rem;
-      line-height: 1.8;
-    }
+    .cta-headline { font-family: var(--font-display); font-size: clamp(3rem, 7vw, 6.5rem); line-height: 0.88; color: var(--white); margin-bottom: 2rem; letter-spacing: 0.02em; }
+    .cta-headline .accent { color: var(--accent); }
+    .cta-sub { font-size: 0.95rem; color: var(--muted); max-width: 420px; margin: 0 auto 3.5rem; line-height: 1.8; }
 
     .btn-outline {
-      border: 1px solid var(--acid);
-      color: var(--acid);
-      font-weight: 400;
+      border: 1px solid var(--accent);
+      color: var(--accent);
       font-size: 0.78rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -558,99 +202,45 @@
       display: inline-block;
       transition: background 0.2s, color 0.2s;
     }
+    .btn-outline:hover { background: var(--accent); color: var(--black); }
+    .cta-guarantee { margin-top: 1.5rem; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
 
-    .btn-outline:hover {
-      background: var(--acid);
-      color: var(--black);
-    }
-
-    .cta-guarantee {
-      margin-top: 1.5rem;
-      font-size: 0.72rem;
-      color: var(--muted);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    /* FOOTER */
-    footer {
-      background: var(--off-black);
-      border-top: 1px solid var(--border);
-      padding: 2rem 3rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .footer-left {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .footer-logo {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      color: var(--white);
-      letter-spacing: 0.1em;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
-
-    .footer-links a {
-      font-size: 0.75rem;
-      color: var(--muted);
-      text-decoration: none;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-
+    footer { background: var(--off-black); border-top: 1px solid var(--border); padding: 2rem 3rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-left { display: flex; align-items: center; gap: 0.6rem; }
+    .footer-logo { font-family: var(--font-display); font-size: 1rem; color: var(--white); letter-spacing: 0.1em; }
+    .footer-links { display: flex; gap: 2.5rem; list-style: none; }
+    .footer-links a { font-size: 0.75rem; color: var(--muted); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
     .footer-links a:hover { color: var(--white); }
+    .footer-copy { font-size: 0.72rem; color: var(--border-light); }
 
-    .footer-copy {
-      font-size: 0.72rem;
-      color: var(--border-light);
-      letter-spacing: 0.05em;
-    }
-
-    /* ANIMATIONS */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
     .hero-eyebrow { animation: fadeUp 0.6s ease both; }
     .hero-headline { animation: fadeUp 0.7s 0.1s ease both; }
     .hero-sub { animation: fadeUp 0.7s 0.2s ease both; }
     .hero-actions { animation: fadeUp 0.7s 0.3s ease both; }
     .hero-right { animation: fadeUp 0.8s 0.2s ease both; }
 
-    /* RESPONSIVE */
     @media (max-width: 900px) {
       nav { padding: 1.25rem 1.5rem; }
       section { padding: 5rem 1.5rem; }
       .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 4rem; gap: 3rem; }
       .hero-line { display: none; }
-      .hero-right { flex-direction: row; flex-wrap: wrap; gap: 2rem; }
-      .hero-stat { border-top: none; border-left: 1px solid var(--border); padding: 0 0 0 1.5rem; }
-      .problem-grid { grid-template-columns: 1fr; }
-      .problem-card { border-right: none; border-bottom: 1px solid var(--border); padding: 2rem 0; }
-      .problem-card:last-child { border-bottom: none; }
-      .problem-card:not(:first-child) { padding-left: 0; }
+      .hero-right { flex-direction: row; flex-wrap: wrap; gap: 0; border-top: 1px solid var(--border); }
+      .hero-stat { border-top: none; border-right: 1px solid var(--border); padding: 1.5rem 1.5rem 1.5rem 0; flex: 1; }
+      .hero-stat:last-child { border-right: none; padding-left: 1.5rem; }
       .how-top { grid-template-columns: 1fr; gap: 2rem; }
       .steps { grid-template-columns: 1fr 1fr; }
       .step { padding: 2rem 0; border-right: none; border-bottom: 1px solid var(--border); }
       .step:nth-child(odd) { padding-right: 1.5rem; border-right: 1px solid var(--border); }
-      .step:not(:first-child) { padding-left: 0; }
-      .step:nth-child(odd):not(:first-child) { padding-left: 0; }
       .step:nth-child(even) { padding-left: 1.5rem; }
+      .step:last-child { border-bottom: none; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .grid-item { border-right: none; border-bottom: 1px solid var(--border); padding: 2rem 0; }
+      .grid-item:last-child { border-bottom: none; }
+      .grid-item:not(:first-child) { padding-left: 0; }
       .case-card { padding: 2rem; }
       .case-fuites { grid-template-columns: 1fr; }
       .fuite { border-right: none; border-bottom: 1px solid var(--border); padding: 1.5rem 0; }
@@ -684,7 +274,7 @@
         <span class="accent">JE TROUVE<br />POURQUOI.</span>
       </h1>
       <p class="hero-sub">
-        En 30 minutes, j'identifie exactement où votre process de vente fuit — et ce que vous pouvez faire dès demain pour le boucher.
+        Vous travaillez dur. Les prospects arrivent. Et puis rien. Avant de retravailler votre offre ou baisser vos prix — vérifiez que votre process ne fuit pas.
       </p>
       <div class="hero-actions">
         <a href="#audit" class="btn-primary">Réserver l'audit gratuit</a>
@@ -707,108 +297,52 @@
     </div>
   </section>
 
-  <!-- MARQUEE -->
-  <div class="marquee-wrap" aria-hidden="true">
-    <div class="marquee-track">
-      <span class="marquee-item"><div class="marquee-dot"></div> Leads qui ne convertissent pas</span>
-      <span class="marquee-item"><div class="marquee-dot"></div> Prospects qui disparaissent</span>
-      <span class="marquee-item"><div class="marquee-dot"></div> Ventes perdues sans raison</span>
-      <span class="marquee-item"><div class="marquee-dot"></div> Process qui fuient</span>
-      <span class="marquee-item"><div class="marquee-dot"></div> Pilotage à l'aveugle</span>
-      <span class="marquee-item"><div class="marquee-dot"></div> Leads qui ne convertissent pas</span>
-      <span class="marquee-item"><div class="marquee-dot"></div> Prospects qui disparaissent</span>
-      <span class="marquee-item"><div class="marquee-dot"></div> Ventes perdues sans raison</span>
-      <span class="marquee-item"><div class="marquee-dot"></div> Process qui fuient</span>
-      <span class="marquee-item"><div class="marquee-dot"></div> Pilotage à l'aveugle</span>
-    </div>
-  </div>
-
   <!-- PROBLEM -->
-  <section>
-    <div class="problem">
+  <section style="border-top: 1px solid var(--border);">
+    <div class="inner">
       <p class="section-label">Le problème</p>
-      <h2 class="problem-headline">
-        VOUS AVEZ DES PROSPECTS.<br />
-        <span style="color: var(--muted);">ILS N'ACHÈTENT PAS.</span>
+      <h2 class="section-headline">
+        CE N'EST PAS VOTRE OFFRE.<br />
+        <span style="color: var(--muted);">C'EST VOTRE PROCESS.</span>
       </h2>
-      <p class="problem-intro">
-        Ce n'est pas votre offre. Ce n'est pas votre prix. C'est votre process. Quelque part entre le premier contact et la signature, vous perdez des gens — et vous ne savez pas où.
-      </p>
-      <p class="problem-quote">
-        "Dans 9 business sur 10, je retrouve les mêmes fuites — des leads sans qualification, des prospects qui disparaissent, des ventes perdues que personne ne documente."
+      <p style="color: var(--muted); max-width: 520px; font-size: 1rem; line-height: 1.8; margin-bottom: 4rem;">
+        Avant de douter de vous, de baisser vos prix ou de tout retravailler — regardez où l'argent disparaît vraiment. La plupart du temps, l'offre n'est pas le problème.
       </p>
 
-      <div class="problem-grid">
-        <div class="problem-card">
-          <span class="problem-card-tag">Fuite 01</span>
-          <h3>Les leads entrent.<br />Rien ne sort.</h3>
-          <p>Vos prospects arrivent mais ne sont pas qualifiés. Personne ne sait qui est chaud, qui est froid — et pourquoi.</p>
+      <div class="grid-3">
+        <div class="grid-item">
+          <span class="grid-tag">Fuite 01</span>
+          <h3>Vous attirez.<br />Mais rien ne convert.</h3>
+          <p>Ils s'inscrivent, font votre test, consomment votre contenu gratuit. Et puis silence. Vous vous demandez si votre offre est nulle. Elle ne l'est pas — c'est le timing qui est cassé.</p>
         </div>
-        <div class="problem-card">
-          <span class="problem-card-tag">Fuite 02</span>
-          <h3>Le "non" reste<br />sans suite.</h3>
-          <p>Quand un prospect dit non, c'est fini. Pas de relance, pas de nurturing. De l'argent qui dort sans que personne ne s'en occupe.</p>
+        <div class="grid-item">
+          <span class="grid-tag">Fuite 02</span>
+          <h3>Le "non" part<br />sans explication.</h3>
+          <p>Un prospect dit non. Vous respectez. Vous attendez. Mais attendre sans système, c'est espérer — pas vendre. Est-ce que vous savez vraiment pourquoi il a dit non ?</p>
         </div>
-        <div class="problem-card">
-          <span class="problem-card-tag">Fuite 03</span>
-          <h3>Vous pilotez<br />à l'aveugle.</h3>
-          <p>Vous ne connaissez pas votre taux de conversion. Vous ne savez pas combien de ventes vous perdez chaque mois.</p>
+        <div class="grid-item">
+          <span class="grid-tag">Fuite 03</span>
+          <h3>Vous vendez seul<br />dans un marché qui veut du lien.</h3>
+          <p>Vos clients veulent apprendre. Mais ils veulent surtout ne pas être seuls. Ajouter un suivi humain à votre offre n'est plus un bonus — c'est ce qui fait basculer la décision.</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ERRORS -->
-  <section style="background: var(--off-black); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
-    <div style="max-width: 1100px; margin: 0 auto;">
-      <p class="section-label">Ce que je vois sur le terrain</p>
-      <h2 style="font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 0.92; margin-bottom: 4rem;">
-        LES ERREURS QUI<br />
-        <span style="color: var(--acid);">COÛTENT LE PLUS CHER.</span>
-      </h2>
-
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--border);">
-
-        <div style="padding: 2.5rem 2rem 2.5rem 0; border-right: 1px solid var(--border);">
-          <span style="font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--acid); margin-bottom: 1.5rem; display: block;">Erreur 01</span>
-          <h3 style="font-size: 1.05rem; font-weight: 500; margin-bottom: 1rem; line-height: 1.35; color: var(--white);">Tout donner trop tôt.</h3>
-          <p style="font-size: 0.875rem; color: var(--muted); line-height: 1.75;">Le prospect vient de découvrir votre offre. Vous lui envoyez déjà tout — 8 vidéos, un programme complet, un lien d'achat. Son cerveau sature. Il ferme l'onglet. Vous ne le reverrez jamais.</p>
-        </div>
-
-        <div style="padding: 2.5rem 2rem; border-right: 1px solid var(--border);">
-          <span style="font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--acid); margin-bottom: 1.5rem; display: block;">Erreur 02</span>
-          <h3 style="font-size: 1.05rem; font-weight: 500; margin-bottom: 1rem; line-height: 1.35; color: var(--white);">Le "non" traité comme une fin.</h3>
-          <p style="font-size: 0.875rem; color: var(--muted); line-height: 1.75;">Un prospect qui dit non aujourd'hui dit souvent oui dans 3 mois. Sans suivi structuré, sans mail personnalisé qui montre que vous l'avez vraiment vu — il achète chez quelqu'un d'autre.</p>
-        </div>
-
-        <div style="padding: 2.5rem 0 2.5rem 2rem;">
-          <span style="font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--acid); margin-bottom: 1.5rem; display: block;">Erreur 03</span>
-          <h3 style="font-size: 1.05rem; font-weight: 500; margin-bottom: 1rem; line-height: 1.35; color: var(--white);">Vendre solo sans contact humain.</h3>
-          <p style="font-size: 0.875rem; color: var(--muted); line-height: 1.75;">Les formations en ligne ne se vendent plus seules. L'acheteur d'aujourd'hui a été déçu trop souvent. Il a besoin de sentir une présence humaine avant d'acheter — pas après.</p>
-        </div>
-
-      </div>
-
-      <p style="margin-top: 3rem; font-size: 0.85rem; color: var(--muted); font-style: italic; border-left: 1px solid var(--border); padding-left: 1.5rem;">
-        Ces erreurs seront mises à jour au fil de mes audits terrain. Ce que vous lisez ici, c'est ce que j'observe réellement — pas de la théorie.
-      </p>
     </div>
   </section>
 
   <!-- HOW IT WORKS -->
   <section class="how">
-    <div class="how-inner">
+    <div class="inner">
       <div class="how-top">
         <div>
           <p class="section-label">Comment ça marche</p>
-          <h2 class="how-headline">
+          <h2 class="section-headline" style="margin-bottom: 0;">
             30 MINUTES.<br />
             3 FUITES.<br />
-            <span style="color: var(--acid);">1 RAPPORT.</span>
+            <span style="color: var(--accent);">1 RAPPORT.</span>
           </h2>
         </div>
         <p class="how-desc">
-          Pas de questionnaire à remplir. Pas de slide deck. Une conversation directe, cinq questions, et un rapport livré dans les 48h avec ce que vous pouvez faire dès maintenant.
+          Pas de questionnaire à remplir. Pas de slide deck. Une conversation directe, cinq questions, et un rapport livré dans les 48h — avec ce que vous pouvez faire dès maintenant. Pas de théorie.
         </p>
       </div>
 
@@ -817,64 +351,59 @@
           <span class="step-num">01</span>
           <div class="step-line"></div>
           <h3>On creuse votre process</h3>
-          <p>5 questions directes sur votre pipeline — de la découverte à la signature. Sans détour.</p>
+          <p>5 questions directes sur votre pipeline — de la découverte à la signature. Sans détour, sans filtre.</p>
         </div>
         <div class="step">
           <span class="step-num">02</span>
           <div class="step-line"></div>
           <h3>J'identifie les fuites</h3>
-          <p>Mon œil de commerciale voit ce que vous ne voyez plus — les points de friction où l'argent disparaît.</p>
+          <p>Mon œil de commerciale voit ce que vous ne voyez plus. Les points de friction où l'argent disparaît — souvent là où vous ne cherchez pas.</p>
         </div>
         <div class="step">
           <span class="step-num">03</span>
           <div class="step-line"></div>
           <h3>Rapport livré en 48h</h3>
-          <p>Une page. 3 fuites. 3 actions concrètes. Rien que vous ne pouvez pas comprendre et appliquer seul.</p>
+          <p>Une page. 3 fuites. 3 actions concrètes. Rien que vous ne pouvez pas comprendre et appliquer — avec ou sans moi.</p>
         </div>
         <div class="step">
           <span class="step-num">04</span>
           <div class="step-line"></div>
           <h3>Vous décidez la suite</h3>
-          <p>Vous appliquez seul ou on travaille ensemble. Aucune pression, aucun engagement.</p>
+          <p>Vous appliquez seul ou on travaille ensemble pour aller plus loin. Aucune pression. Aucun engagement.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CASE STUDY -->
-  <section>
-    <div class="case">
+  <section style="border-top: 1px solid var(--border);">
+    <div class="inner">
       <p class="section-label">Cas concret</p>
-      <h2 class="case-headline">
+      <h2 class="section-headline">
         CE QUE ÇA DONNE<br />
-        <span style="color: var(--acid);">EN VRAI.</span>
+        <span style="color: var(--accent);">EN VRAI.</span>
       </h2>
 
       <div class="case-card">
         <div class="case-meta">
-          <span class="case-client">J.B.</span>
-          <span class="case-tag">Coach business · Belgique</span>
+          <span class="case-client">Coach business</span>
+          <span class="case-tag">Formation en ligne · Francophone</span>
         </div>
 
         <div class="case-fuites">
           <div class="fuite">
             <span class="fuite-label">Fuite 01</span>
-            <p>Les tests gratuits attiraient du monde — mais proposaient le programme complet trop tôt. Les prospects disparaissaient avant d'être prêts.</p>
+            <p>Des centaines de personnes faisaient le test gratuit chaque mois. Le programme complet leur était proposé immédiatement après — avant même qu'ils comprennent leur résultat. Ils partaient sans acheter.</p>
           </div>
           <div class="fuite">
             <span class="fuite-label">Fuite 02</span>
-            <p>Après les challenges, pas de suivi personnalisé pour les prospects non convertis. Un "non" = perdu pour toujours.</p>
+            <p>Après chaque challenge, les prospects non convertis disparaissaient dans le silence. Pas de message personnalisé, pas de question sur leur blocage. Un "non" sans suite — et sans apprentissage.</p>
           </div>
           <div class="fuite">
             <span class="fuite-label">Fuite 03</span>
-            <p>Les formations self-study ne se vendent plus sans contact humain. L'acheteur d'aujourd'hui a besoin d'être accompagné pour passer à l'action.</p>
+            <p>Les formations en autonomie ne convertissaient plus. Les prospects hésitaient, attendaient. Ajouter un point de contact humain à l'entrée du programme a changé la dynamique d'achat.</p>
           </div>
         </div>
-
-        <blockquote class="case-quote">
-          "Je voulais prendre des notes pendant l'échange — ça m'a vraiment ouvert les yeux sur ce que je ne voyais plus."
-          <cite>— J.B., Coach business · Belgique</cite>
-        </blockquote>
       </div>
     </div>
   </section>
@@ -885,16 +414,14 @@
     <div class="cta-inner">
       <p class="section-label" style="justify-content: center;">Passez à l'action</p>
       <h2 class="cta-headline">
-        PRÊT À SAVOIR<br />
-        OÙ VOUS PERDEZ<br />
-        <span class="accent">VOS CLIENTS ?</span>
+        ARRÊTEZ DE DOUTER<br />
+        DE VOTRE OFFRE.<br />
+        <span class="accent">VÉRIFIEZ VOTRE PROCESS.</span>
       </h2>
       <p class="cta-sub">
-        30 minutes. Une conversation franche. Un rapport livré dans les 48h. Sans bullshit, sans engagement.
+        30 minutes. Une conversation franche. Un rapport livré dans les 48h. Sans bullshit, sans engagement — juste ce qui ne va pas et comment le régler.
       </p>
-      <a href="mailto:la.moutarde.noire@gmail.com?subject=Demande d'audit gratuit&body=Bonjour Miora, je souhaite réserver mon audit express." class="btn-outline">
-        Réserver l'audit gratuit
-      </a>
+      <a href="CALENDLY_LINK" class="btn-outline">Réserver l'audit gratuit</a>
       <p class="cta-guarantee">Gratuit · 30 minutes · Rapport en 48h</p>
     </div>
   </section>
